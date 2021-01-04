@@ -1,0 +1,19 @@
+{
+  "name": "@hdtjs/cli",
+  "version": "0.0.1",
+  "main": "bin/cli",
+  "types": "bin/cli",
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./bin",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
+    "test": "npm run build"
+  },
+  "dependencies": {
+    "@hdtjs/api": "^0.0.1"
+  }
+}

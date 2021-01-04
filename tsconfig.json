@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.build.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@scope/*": ["packages/*/src"]
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": []
+  }
+}
