@@ -9,6 +9,8 @@
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna run clean",
+    "dev": "nodemon --config nodemon.json packages/cli/bin/HDTInfo.js examples/1.hdt",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk packages/cli/bin/HDTInfo.js examples/1.hdt",
     "test": "lerna run test",
     "postinstall": "lerna bootstrap --hoist"
   },

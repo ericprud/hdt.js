@@ -1,6 +1,15 @@
 {
-  "watch": ["src"],
+  "restartable": "rs",
+  "ignore": [".git", "node_modules/", "dist/", "coverage/"],
+  "watch": ["src/"],
   "ext": ".ts",
-  "ignore": [],
-  "exec": "ts-node ./packages/cli/src/HDTInfo.ts"
+  "execMap": {
+    "ts": "node -r ts-node/register"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "exec999": "ts-node ./packages/cli/src/HDTInfo.ts",
+  "exec9999": "npm run build",
+  "ext": "js,json,ts"
 }
