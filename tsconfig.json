@@ -4,7 +4,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@scope/*": ["packages/*/src"]
+      "@hdtjs/core": ["core/src"],
+      "@hdtjs/api": ["bar/src"],
+      "@hdtjs/cli": ["cli/src"],
+      "@hdtjs/*": ["*/src"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
