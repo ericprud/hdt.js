@@ -1,19 +1,20 @@
 {
   "name": "@hdtjs/api",
   "version": "0.0.1",
-  "main": "lib/api",
-  "types": "lib/api",
+  "main": "./lib/api.js",
+  "types": "./lib/api.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
-  "scripts": {
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf ./lib",
-    "compile": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "npm run build",
-    "test": "npm run build"
-  },
   "dependencies": {
     "@hdtjs/core": "^0.0.1"
+  },
+  "scripts": {
+    "build": "tsc -b ./tsconfig.package.json",
+    "prepublish": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

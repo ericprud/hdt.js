@@ -1,1 +1,3 @@
-export const meaningOfLife = 42;
+export function Core() {
+    return 'Core';
+}

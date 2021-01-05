@@ -1,3 +1,5 @@
 node_modules
+.vscode
 packages/*/lib/
 packages/cli/bin/
+tsconfig.package.tsbuildinfo

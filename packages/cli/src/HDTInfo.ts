@@ -1,5 +1,9 @@
-import { meaningOfLife2 } from "@hdtjs/api";
+import { CoreApi } from '@hdtjs/api';
 
-// eslint-disable-next-line no-console
-console.log(meaningOfLife2, meaningOfLife2 * 2, process.argv.slice(2));
+function main(argv: string[]) {
+    console.log(CoreApi() + ' HDTInfo', argv.slice(2));
+}
 
+if (process.mainModule === module) {
+    main(process.argv);
+}

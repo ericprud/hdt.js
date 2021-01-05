@@ -1,5 +1,4 @@
-import { meaningOfLife } from "@hdtjs/core";
-
-// eslint-disable-next-line no-console
-console.log(meaningOfLife);
-export const meaningOfLife2 = meaningOfLife * 2;
+import { Core } from '@hdtjs/core';
+export function CoreApi() {
+    return Core() + ' Api';
+}

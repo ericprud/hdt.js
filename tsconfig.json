@@ -1,6 +1,5 @@
 {
-  "extends": "./tsconfig.build.json",
-
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -9,8 +8,6 @@
       "@hdtjs/cli": ["cli/src"],
       "@hdtjs/*": ["*/src"]
     },
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": []
+    "noEmit": true
   }
 }
