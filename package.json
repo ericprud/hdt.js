@@ -1,11 +1,10 @@
 {
   "name": "hdtjs",
-  "version": "0.0.1",
   "description": "native JS support for HDT ",
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "all": "npm run update:package.json && npm run update:tsconfig.json && npm run bootstrap",
     "bootstrap": "npm i && lerna bootstrap --ignore-scripts && npm run build",

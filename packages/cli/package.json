@@ -7,14 +7,14 @@
     "bin",
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@hdtjs/api": "^0.0.1"
   },
   "scripts": {
     "build": "tsc -b ./tsconfig.package.json",
     "prepublish": "npm run build"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
