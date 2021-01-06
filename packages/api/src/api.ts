@@ -1,4 +1,9 @@
 import { Core } from '@hdtjs/core';
-export function CoreApi() {
+
+function CoreApi() {
     return Core() + ' Api';
+}
+
+export {
+    CoreApi
 }

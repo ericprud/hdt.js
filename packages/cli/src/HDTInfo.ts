@@ -1,31 +1,21 @@
 import { CoreApi } from '@hdtjs/api';
-import { Command } from 'commander';
-
-class HDTInfo {
-    parameters: String[] = [];
-    static showVersion: boolean;
-    hdtInput: String;
-    execute(): void {
-    }
-}
+import * as Commander from 'commander';
+// import Readable from 'readable-stream';
+import * as Fs from "fs";
+import { ControlInformation } from '@hdtjs/core';
 
 function main(argv: string[]) {
-    const hdtInfo: HDTInfo = new HDTInfo();
-    com: Command/* = new Command()*/;
-    if (HDTInfo.showVersion) {
-        console.log("0.0");
-        process.exit(0);
-    }
-
-    try {
-        if (hdtInfo.hdtInput === undefined)
-            hdtInfo.hdtInput = hdtInfo.parameters[0];
-    } catch (e) {
-        process.exit(1);
-    }
-
-    hdtInfo.execute();
-    console.log(CoreApi() + ' HDTInfo', argv.slice(2), hdtInfo);
+    const cli = new Commander.Command()
+        .version("0.0.1" /*HDTVersion.get_version_string(".")*/)
+        .parse(process.argv);
+    const hdtInput = cli.args[0];
+    if (hdtInput.endsWith(".gz"))
+        throw Error("GZIP not supported")
+    const input = Fs.createReadStream(hdtInput);
+    const ci = new ControlInformation();
+    ci.load(input);
+    const x = input.read();
+    console.log(new Date(), CoreApi() + ' hdtInput:', hdtInput);
 }
 
 if (process.mainModule === module) {

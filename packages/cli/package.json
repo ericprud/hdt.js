@@ -11,7 +11,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@hdtjs/api": "^0.0.1"
+    "@hdtjs/api": "^0.0.1",
+    "@hdtjs/core": "^0.0.1"
   },
   "scripts": {
     "build": "tsc -b ./tsconfig.package.json",
