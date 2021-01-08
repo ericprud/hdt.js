@@ -1,10 +1,11 @@
 import ControlInformation from './options/ControlInformation';
+import { Api } from '@hdtjs/api';
 
-function Core() {
-    return 'Core';
-}
+
+
+function ApiCore() { return Api() + ' Core'; }
 
 export {
     ControlInformation,
-    Core
+    ApiCore
 }

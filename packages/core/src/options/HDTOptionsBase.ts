@@ -5,7 +5,7 @@ export default class HDTOptionsBase {
         console.warn("new HDTOptionsBase");
     }
 
-    get(key: string): string | undefined { return this.properties.get(key); }
+    get(key: string): string { return this.properties.get(key) || ''; }
     set(key: string, value: string): void { this.properties.set(key, value); }
     setOptions(options: string) {
         options.split(";").forEach(item => {
@@ -18,7 +18,7 @@ export default class HDTOptionsBase {
         });
     }
     setInt(key: string, val: number) { this.properties.set(key, "" + val); }
-    getInt(key: string): number | undefined {
+    getInt(key: string): number {
         const val = this.properties.get(key);
         return val === undefined
             ? 0

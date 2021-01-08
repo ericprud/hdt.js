@@ -7,6 +7,9 @@
     "lib",
     "src"
   ],
+  "dependencies": {
+    "@hdtjs/api": "^0.0.1"
+  },
   "publishConfig": {
     "access": "public"
   },

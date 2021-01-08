@@ -1,9 +1,8 @@
-import { Core } from '@hdtjs/core';
+import { ControlInfo } from './options/ControlInfo';
 
-function CoreApi() {
-    return Core() + ' Api';
-}
+function Api() { return 'Api'; }
 
 export {
-    CoreApi
+    ControlInfo,
+    Api
 }
