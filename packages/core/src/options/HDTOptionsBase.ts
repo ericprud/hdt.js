@@ -2,7 +2,6 @@ export default class HDTOptionsBase {
     properties: Map<string, string>;
     constructor() {
         this.properties = new Map();
-        console.warn("new HDTOptionsBase");
     }
 
     get(key: string): string { return this.properties.get(key) || ''; }

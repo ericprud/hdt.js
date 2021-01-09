@@ -1,10 +1,10 @@
-import { ApiCore } from '@hdtjs/core';
+import { ApiCore, ControlInformation } from '@hdtjs/core';
 import * as Commander from 'commander';
 // import Readable from 'readable-stream';
 import * as Fs from "fs";
 // import ControlInformation from '@hdtjs/core/lib/options/ControlInformation'
-import { ControlInformation } from '@hdtjs/core';
 import { Readable } from 'stream';
+import { Comparable } from '@hdtjs/api';
 
 function main(argv: string[]) {
     const cli = new Commander.Command()
@@ -14,12 +14,19 @@ function main(argv: string[]) {
     if (hdtInput.endsWith(".gz"))
         throw Error("GZIP not supported")
     const input: Readable = Fs.createReadStream(hdtInput);
-    const ci = new ControlInformation();
-    ci.load(input);
-    console.log(new Date(), ApiCore() + ' ci:', ci);
+    input.on('readable', () => {
+        const bytes: number[] = [10, 20, 30];
+        // const red = input.read(3);
+        // console.log(red);
+        // console.log(bytes.map(b => b.toString(16)).join(','));
+        const ci = new ControlInformation();
+        // @@ add input.pause() to ensure input is in paused mode?
+        ci.load(input);
+        console.log(new Date(), ApiCore() + ' ci:', ci);
+    });
+
 }
 
 if (require.main === module) {
     main(process.argv);
 }
-
