@@ -1,11 +1,8 @@
 import ControlInformation from './options/ControlInformation';
-import { Api } from '@hdtjs/api';
+import IOUtil from './util/io/IOUtil';
 
-
-
-function ApiCore() { return Api() + ' Core'; }
 
 export {
     ControlInformation,
-    ApiCore
+    IOUtil
 }

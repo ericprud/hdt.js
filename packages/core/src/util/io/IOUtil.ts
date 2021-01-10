@@ -1,3 +1,4 @@
+import ProgressListener from "@hdtjs/api";
 import { Readable } from "stream";
 
 export default class IOUtil {
@@ -221,30 +222,22 @@ export default class IOUtil {
         public static int byteArrayToInt(byte[] value){
             return (value[3] << 24) + (value[2] << 16) + (value[1] << 8) + (value[0] << 0);
         }
-    
-        /**
-         * @param input din
-         * @param length bytes
-         * @param listener
-         * @return
-         * /
-        public static byte[] readBuffer(Readable input, int length, ProgressListener listener) throws IOException {
-            int nRead;
-            int pos=0;
-            byte[] data = new byte[length];
-    
-            while ((nRead = input.read(data, pos, length-pos)) >0) {
-                // TODO: Notify progress listener
-                pos += nRead;
-            }
-    
-            if(pos!=length) {
-                throw new IOException("EOF while reading array from Readable");
-            }
-    
-            return data;
-        }
-    
+        */
+    /**
+     * @param input din
+     * @param length bytes
+     * @param listener
+     * @return
+     */
+    static readBuffer(input: Readable, length: number, /* listener: ProgressListener */): number[] {
+        const ret = [...input.read(length)];
+        // TODO: Notify progress listener
+        if (ret.length !== length)
+            throw Error('IOException("EOF while reading array from Readable")');
+
+        return ret;
+    }
+    /*
         public static CharSequence toBinaryString(long val) {
             StringBuilder str = new StringBuilder(64);
             int bits = 64;

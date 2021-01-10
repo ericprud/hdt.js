@@ -1,4 +1,4 @@
-import { ApiCore, ControlInformation } from '@hdtjs/core';
+import { ControlInformation, IOUtil } from '@hdtjs/core';
 import * as Commander from 'commander';
 // import Readable from 'readable-stream';
 import * as Fs from "fs";
@@ -27,11 +27,10 @@ async function main(argv: string[]) {
     ci.load(input);
     const headerSize: number = ci.getInt('length');
 
-    // const headerData :number[] = 
+    const headerData: number[] = IOUtil.readBuffer(input, headerSize, /* null */);
+    // input.destroy(); // throws ERR_STREAM_PREMATURE_CLOSE after main()
 
-    console.log(new Date(), ApiCore() + ' ci:', ci);
-    // });
-
+    console.log(headerData.map(c => String.fromCharCode(c)).join(''));
 }
 
 if (require.main === module) {

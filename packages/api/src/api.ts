@@ -1,4 +1,5 @@
 import { Readable, finished } from 'stream';
+import ProgressListener from './listener/ProgressListener';
 import { ControlInfo } from './options/ControlInfo';
 
 interface Comparable<T> {
@@ -50,11 +51,10 @@ class FilterReadable extends Readable {
     // }
 }
 
-function Api() { return 'Api'; }
 
 export {
     ControlInfo,
     Comparable,
     FilterReadable,
-    Api
+    ProgressListener
 }
