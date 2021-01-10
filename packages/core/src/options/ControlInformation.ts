@@ -23,5 +23,21 @@ export default class ControlInformation extends HDTOptionsBase implements Contro
         const magic: string = IOUtil.readChars(inp, 4);
         if (magic !== '$HDT')
             throw Error(`Non-HDT Section, expected "$HDT", got "${magic}"`);
+
+        this.type = IOUtil.readByte(inp);
+        // @@ for unknown, throw IllegalFormatException("The type of the ControlInformation is unknown for this implementation");
+
+        this.format = IOUtil.readLine(inp, 0);
+        const propertiesStr: string = IOUtil.readLine(inp, 0)
+        for (let item of propertiesStr.split(";")) {
+            const pos: number = item.indexOf('=');
+            if (pos !== -1) {
+                const property = item.substring(0, pos);
+                const value = item.substring(pos + 1);
+                this.properties.set(property, value);
+            }
+        }
+
+        inp.readCRCAndCheck();
     }
 }

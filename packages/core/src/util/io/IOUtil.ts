@@ -30,28 +30,28 @@ export default class IOUtil {
     public static BufferedReader getFileReader(String fileName) throws IOException {
         return new BufferedReader(new ReadableReader(getFileReadable(fileName)));
     }
-    
-    public static String readLine(Readable in, char character) throws IOException {
-        ByteArrayWritable buf = new ByteArrayWritable();
-        while(true) {
-            int value = in.read();
-            if(value==-1) {
-                throw new EOFException();
+*/
+
+    static readLine(inp: Readable, character: number): string {
+        const out = [];
+        while (true) {
+            const c = inp.read();
+            if (c == -1) {
+                throw Error('EOFException');
             }
-            if(value==character) {
+            if (c == character) {
                 break;
             }
-            buf.write(value);
+            out.push(String.fromCharCode(c));
         }
-        return new String(buf.toByteArray()); // Uses default encoding
+        return out.join(''); // Uses default encoding
     }
-*/
 
     static readChars(inp: Readable, numChars: number): string {
         const out = [];
         for (let i = 0; i < numChars; i++) {
             const c = inp.read();
-            if (c == -1) {
+            if (c === -1) {
                 throw Error('EOF');
             }
             out[i] = String.fromCharCode(c);
@@ -289,15 +289,17 @@ export default class IOUtil {
             out.write(value & 0xFF);
             out.write((value >> 8) & 0xFF);
         }
-    
-        public static byte readByte(Readable in) throws IOException {
-            int b = in.read();
-            if (b < 0) {
-                throw new EOFException();
-            }
-            return (byte)(b&0xFF);
+    */
+
+    static readByte(inp: Readable): number {
+        const b: number = inp.read();
+        if (b < 0) {
+            throw new Error('EOFException');
         }
-    
+        return b & 0xFF;
+    }
+
+    /*
         public static void writeByte(Writable out, byte value) throws IOException {
             out.write(value);
         }

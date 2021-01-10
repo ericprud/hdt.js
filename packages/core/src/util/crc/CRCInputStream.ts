@@ -18,7 +18,7 @@ export default class CRCInputStream extends FilterReadable {
     read(b: number[], offset: number, length: number): number;
     read(b?: number[], offset?: number, length?: number): number {
         if (b === undefined) {
-            const i: number = this.inp.read(1);
+            const i: number = this.inp.read(1)[0];
             this.crc.update(i & 0xFF);
             return i;
         }

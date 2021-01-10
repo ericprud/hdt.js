@@ -6,7 +6,7 @@ import * as Fs from "fs";
 import { Readable } from 'stream';
 import { Comparable } from '@hdtjs/api';
 
-function main(argv: string[]) {
+async function main(argv: string[]) {
     const cli = new Commander.Command()
         .version("0.0.1" /*HDTVersion.get_version_string(".")*/)
         .parse(process.argv);
@@ -14,16 +14,23 @@ function main(argv: string[]) {
     if (hdtInput.endsWith(".gz"))
         throw Error("GZIP not supported")
     const input: Readable = Fs.createReadStream(hdtInput);
-    input.on('readable', () => {
-        const bytes: number[] = [10, 20, 30];
-        // const red = input.read(3);
-        // console.log(red);
-        // console.log(bytes.map(b => b.toString(16)).join(','));
-        const ci = new ControlInformation();
-        // @@ add input.pause() to ensure input is in paused mode?
-        ci.load(input);
-        console.log(new Date(), ApiCore() + ' ci:', ci);
-    });
+    await new Promise((accept, reject) => {
+        input.on('readable', () => accept(null));
+    })
+    const ci = new ControlInformation();
+    // @@ add input.pause() to ensure input is in paused mode?
+
+    // Load Global ControlInformation
+    ci.load(input);
+
+    // Load header
+    ci.load(input);
+    const headerSize: number = ci.getInt('length');
+
+    // const headerData :number[] = 
+
+    console.log(new Date(), ApiCore() + ' ci:', ci);
+    // });
 
 }
 
